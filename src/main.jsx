@@ -1,5 +1,8 @@
+//IMPORT
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import * as bootstrap from 'bootstrap'
+import * as bootstrap from 'bootstrap-icons'
 import './index.css'
 import App from './App.jsx'
 
