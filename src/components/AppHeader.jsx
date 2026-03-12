@@ -4,7 +4,7 @@ export default function AppHeader() {
 
         /* Header */
         <header>
-            <h1>TodoList</h1>
+            <h1>Articoli da comprare.</h1>
         </header>
 
     )
