@@ -30,16 +30,20 @@ export default function AppMain() {
     function deleteElement(elementIndex) {
         /* console.log(elementIndex); */
         
+        const removedItem = shopList.toSpliced(elementIndex, 1)
+        console.log(removedItem);
         
-        const updatedList = shopList.filter((itemList, index) => {
+       /*  const updatedList = shopList.filter((itemList, index) => {
             if(index !== elementIndex) {
                 return true
 
             }
             return false
-        })
+        }) */
 
-        setShopList(updatedList)
+
+        setShopList(removedItem)
+        
  
         
         
