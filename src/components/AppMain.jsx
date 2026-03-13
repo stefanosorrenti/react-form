@@ -10,6 +10,7 @@ export default function AppMain() {
     //let articlesList = ['Pane', 'Uova', 'Mozzarella', 'Zucchine', 'Pasta',] //Array di partenza
     const [userValue, setUserValue] = useState('')
     const [edit, setEdit] = useState(-1)
+    const [editedItem, setEditedItem] = useState('')
 
     const [buttonTitle, setButtonTitle] = useState('Aggiungi articolo')
     //FUNCTIONS
@@ -24,8 +25,12 @@ export default function AppMain() {
         
     }
 
-    function deleteElement(elementIndex) {
+  
 
+    function deleteElement(elementIndex) {
+        /* console.log(elementIndex); */
+        
+        
         const updatedList = shopList.filter((itemList, index) => {
             if(index !== elementIndex) {
                 return true
@@ -35,6 +40,8 @@ export default function AppMain() {
         })
 
         setShopList(updatedList)
+ 
+        
         
     }
 
@@ -44,21 +51,44 @@ export default function AppMain() {
     //LA FUNZIONE DEVE RESTIURIMI UN ARRAY DOVE
     //SOLO IL VALROE DELL'ELEMENTO CLICCATO DOVRA ESSERE UGUALE AL VALORE DEL PROMPT
 
-    function editElement(elementIndex) {
-        //const userPrompt = prompt('Inserisci qui il titolo')
-        setEdit(elementIndex)
-        
-        
-        
+function getDynamicEdit (e) {
+    e.preventDefault()
+    
+    //console.log(editedItem);
+   //console.log(shopList);
+    setUserValue('')
+    setEditedItem('')
+    setEdit(-1)
+    
 
-        
-        
-        
-    }
+}
+
+
+function editElement(elementIndex) {
+
+    
+    
+    const updateItem = shopList.toSpliced(elementIndex, 1, editedItem)
+
+    
+    
+    
+    console.log(updateItem);
+
+    setShopList(updateItem)
+
+    
+    
+    
+    
+    
+    
+}  
 
     return (
 
         /* Main */
+
         <main>
 
             {/* FORM SECTION */}
@@ -71,18 +101,24 @@ export default function AppMain() {
 
 
             {/* Shopping list */}
+
             <div>
                 
                 <ul>
                     {shopList.map((article, index) => ( //Aggiungo un map per avere un array della stessa lunghezza ma legegrmente modificato
                         <li key={index}>{article} {/* Ad ogni iterazione verra creato un tag li con il singolo elemento dell'array. */}
-                            <button onClick={()=> editElement(index)}>Modifica</button>
+                            <button onClick={()=> setEdit(index)}>Modifica</button>
                             <button onClick={() => deleteElement(index)}>Elimina</button>
                             {index == edit && (
+
                                 <>
-                                <form>
-                                    <input type="text" />
+                                <form onSubmit={getDynamicEdit}>
+                                    
+                                    <input type="text" onChange={e => setEditedItem(e.target.value)} value={editedItem} />
+                                    <a onClick={()=> {setEdit(-1); setEditedItem('')}}>X</a>
+                                    <button type="submit" onClick={() => editElement(index) } >Modfica</button>
                                 </form>
+                                
                                 </>
                             ) } 
                         </li> 
