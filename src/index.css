@@ -1,10 +1,15 @@
 /* GENERICS */
-*{
+* {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 
+
+/* Font */
+body {
+    font-family: 'Montserrat Variable', sans-serif;
+}
 
 
 /* UTILITY */
@@ -14,13 +19,59 @@
 }
 
 
+
+
 /* --------HEADER-------- */
 
 header {
     text-align: center;
     padding: 10px;
     font-size: x-large;
+
 }
 
 
 /* --------MAIN---------- */
+main {
+    text-align: center;
+    padding-top: 50px;
+
+}
+
+/* Add element form */
+
+main section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+section input {
+    border: none;
+    box-shadow: 0 0 2px 0px black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+/* section form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+} */
+.add-button {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: 0 0 2px 0px black;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(20, 200, 29);
+    padding: 5px;
+    color: black;
+    font-size: larger;
+}

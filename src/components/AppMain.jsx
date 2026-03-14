@@ -80,13 +80,14 @@ export default function AppMain() {
 
         /* Main */
 
-        <main>
+        <main className="container">
 
             {/* FORM SECTION */}
             <section>
+                <h2>Aggiungi Articolo</h2>
                 <form onSubmit={getDynamicSubmit}> {/* Aggiungo un evento per ascotlare al submit del form e passo uan funzione che esguira della logica. */}
-                    <input type="text" onChange={e => setUserValue(e.target.value)} value={userValue} /> {/* Rendo dinamico il valore del mio input */}
-                    <button disabled={userValue.length === 0 && true}  type='submit'>Aggiungi Articolo</button> {/* Disabilito l'utilizzo del bottono se il campo dell'input è vuoto. */}
+                    <input type="text" onChange={e => setUserValue(e.target.value)} value={userValue} placeholder="Inserisci qui il tuo articolo" /> {/* Rendo dinamico il valore del mio input */}
+                    <button className="add-button" disabled={userValue.length === 0 && true}  type='submit'>+</button> {/* Disabilito l'utilizzo del bottono se il campo dell'input è vuoto. */}
                 </form>
             </section>
 
@@ -108,7 +109,7 @@ export default function AppMain() {
 
                                         <input type="text" onChange={e => setEditedItem(e.target.value)} value={editedItem} /> {/* Rendo dinamico il valore dell'input */}
                                         <a onClick={() => { setEdit(-1), setEditedItem('') }}>X</a> {/* Per annullare la modifica, setta il mio edit su -1 che mi permette di far sparire il markup*/}
-                                        <button type="submit" onClick={editedItem.length > 0 && function () { editElement(index) }} >Modfica</button> {/* Bottone per il per comfermare la modifica, se cliccato fa partire la modifica del campo SOLO se il campo NON E' VUOTO.  */}
+                                        <button className="btn" type="submit" onClick={editedItem.length > 0 && function () { editElement(index) }} >Modfica</button> {/* Bottone per il per comfermare la modifica, se cliccato fa partire la modifica del campo SOLO se il campo NON E' VUOTO.  */}
                                         {editedItem.length === 0 && <div className="Alert">Inserisci almeno un carattere!</div>} {/* Render condizionale: Se il campo è input VUOTO renderizza il markup di avvertimento. */}
                                     </form>
 
