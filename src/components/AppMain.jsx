@@ -98,19 +98,21 @@ export default function AppMain() {
 
                 <ul>
                     {shopList.map((article, index) => ( //Aggiungo un map per avere un array della stessa lunghezza ma legegrmente modificato
-                        <li key={index}>{article} {/* Ad ogni iterazione verra creato un tag li con il singolo elemento dell'array. */}
-                            <button onClick={() => setEdit(index)}>Modifica</button> {/* Imposto la mia variabile di stato uguale all'indice dell'elemento selezionato. */}
-                            <button onClick={() => deleteElement(index)}>Elimina</button> {/* Passo la funzione per elimanare un elemento al click, e come parametro passo il suo indice */}
+                        <li className="txt-start" key={index}>{article} {/* Ad ogni iterazione verra creato un tag li con il singolo elemento dell'array. */}
+                            <button onClick={() => setEdit(index)}>🖊️</button> {/* Imposto la mia variabile di stato uguale all'indice dell'elemento selezionato. */}
+                            <button onClick={() => deleteElement(index)}>🗑️</button> {/* Passo la funzione per elimanare un elemento al click, e come parametro passo il suo indice */}
 
                             {index == edit && (  /* Uso un render condizionale e gli dico che: Se il mio index dell'elemento clicca è uguale alla variabile di stato edit(impostata prima) renderizza questo markup:*/
 
                                 <>
-                                    <form onSubmit={getDynamicEdit}> {/* Form secondario che esegue la logica per modificare l'elemento. */}
+                                    <form className="edit-element-form" onSubmit={getDynamicEdit}> {/* Form secondario che esegue la logica per modificare l'elemento. */}
 
                                         <input type="text" onChange={e => setEditedItem(e.target.value)} value={editedItem} /> {/* Rendo dinamico il valore dell'input */}
-                                        <a onClick={() => { setEdit(-1), setEditedItem('') }}>X</a> {/* Per annullare la modifica, setta il mio edit su -1 che mi permette di far sparire il markup*/}
-                                        <button className="btn" type="submit" onClick={editedItem.length > 0 && function () { editElement(index) }} >Modfica</button> {/* Bottone per il per comfermare la modifica, se cliccato fa partire la modifica del campo SOLO se il campo NON E' VUOTO.  */}
-                                        {editedItem.length === 0 && <div className="Alert">Inserisci almeno un carattere!</div>} {/* Render condizionale: Se il campo è input VUOTO renderizza il markup di avvertimento. */}
+                                        {editedItem.length === 0 && <div className="alert">Inserisci almeno un carattere!</div>} {/* Render condizionale: Se il campo è input VUOTO renderizza il markup di avvertimento. */}
+                                        <div className="edit-buttons"> {/* Contenitore dei 'bottoni' per editare gli elementi */}
+                                        <a onClick={() => { setEdit(-1), setEditedItem('') }}>❌</a> {/* Per annullare la modifica, setta il mio edit su -1 che mi permette di far sparire il markup*/}
+                                        <button className="confirm-button" type="submit" onClick={editedItem.length > 0 && function () { editElement(index) }} >✔️</button> {/* Bottone per il per comfermare la modifica, se cliccato fa partire la modifica del campo SOLO se il campo NON E' VUOTO.  */}
+                                        </div>
                                     </form>
 
                                 </>
