@@ -1,2 +1,26 @@
+/* GENERICS */
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
 
 
+
+/* UTILITY */
+.container {
+    max-width: 1200px;
+    margin: 0px auto;
+}
+
+
+/* --------HEADER-------- */
+
+header {
+    text-align: center;
+    padding: 10px;
+    font-size: x-large;
+}
+
+
+/* --------MAIN---------- */
